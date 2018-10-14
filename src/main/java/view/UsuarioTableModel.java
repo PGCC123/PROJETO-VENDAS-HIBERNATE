@@ -7,7 +7,7 @@ import model.UsuarioModel;
 public class UsuarioTableModel extends AbstractTableModel {
 
     private ArrayList<UsuarioModel> linhas;
-    String[] colunas = {"ID", "Login", "Nome", "Senha", "Ativo"};
+    String[] colunas = {"CÓDIGO", "LOGIN", "NOME", "ATIVO"};
 
     public UsuarioTableModel(ArrayList<UsuarioModel> arrayusuario) {
         linhas = arrayusuario;
@@ -42,7 +42,7 @@ public class UsuarioTableModel extends AbstractTableModel {
             case 2:
                 return usuario.getUSU_LOGIN();
             case 3:
-                return usuario.getUSU_ATIVO();                
+                return usuario.getUSU_ATIVO();
             default:
                 return null;
         }

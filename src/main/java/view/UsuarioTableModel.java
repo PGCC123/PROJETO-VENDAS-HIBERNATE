@@ -42,7 +42,7 @@ public class UsuarioTableModel extends AbstractTableModel {
             case 2:
                 return usuario.getUSU_LOGIN();
             case 3:
-                return usuario.getUSU_ATIVO();
+                return usuario.getUSU_ATIVO();                
             default:
                 return null;
         }

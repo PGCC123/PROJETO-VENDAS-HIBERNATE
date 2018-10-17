@@ -5,12 +5,15 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Locale;
+import java.util.Date;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.Timer;
+import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.UsuarioModel;
@@ -41,6 +44,7 @@ public class UsuarioView extends javax.swing.JFrame {
         initComponents();
         setOperacao(""); // inicializa o form no modo CONSULTA
         setLocationRelativeTo(null);
+        tblConsulta.getTableHeader().setBackground(Color.GRAY);
         consultar();
         // adiciona evento para que qdo navegar no JTable, atualize o registro nos JTextField´s
         tblConsulta.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
@@ -64,21 +68,27 @@ public class UsuarioView extends javax.swing.JFrame {
         String erroMessage = "Campos com * devem ser preenchidos!";
 
         if (edtUSU_NOME.getText() == null || edtUSU_NOME.getText().length() == 0) {
-            lblVALIDACAO_NOME.setForeground(Color.RED);
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtUSU_NOME.setBorder(border);
         } else {
-            lblVALIDACAO_NOME.setForeground(Color.BLACK);
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtUSU_NOME.setBorder(border);
         }
 
         if (edtUSU_LOGIN.getText() == null || edtUSU_LOGIN.getText().length() == 0) {
-            lblVALIDACAO_LOGIN.setForeground(Color.RED);
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtUSU_LOGIN.setBorder(border);
         } else {
-            lblVALIDACAO_LOGIN.setForeground(Color.BLACK);
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtUSU_LOGIN.setBorder(border);
         }
 
         if (edtUSU_SENHA.getText() == null || edtUSU_SENHA.getText().length() == 0) {
-            lblVALIDACAO_SENHA.setForeground(Color.RED);
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtUSU_SENHA.setBorder(border);
         } else {
-            lblVALIDACAO_SENHA.setForeground(Color.BLACK);
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtUSU_SENHA.setBorder(border);
         }
 
         if (erroMessage.length() == 0) {
@@ -122,9 +132,6 @@ public class UsuarioView extends javax.swing.JFrame {
         edtUSU_SENHA = new javax.swing.JPasswordField();
         comboUSU_ATIVO = new javax.swing.JComboBox<>();
         lblUSU_ATIVO = new javax.swing.JLabel();
-        lblVALIDACAO_LOGIN = new javax.swing.JLabel();
-        lblVALIDACAO_SENHA = new javax.swing.JLabel();
-        lblVALIDACAO_NOME = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -161,7 +168,6 @@ public class UsuarioView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MVC - Cadastro de Usuários");
         setFocusable(false);
-        setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
@@ -169,6 +175,7 @@ public class UsuarioView extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
+        jToolBar1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jToolBar1.setRollover(true);
 
         btnPRIMEIRO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/primeiro.png"))); // NOI18N
@@ -291,8 +298,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jSeparator4.setSeparatorSize(new java.awt.Dimension(30, 30));
         jToolBar1.add(jSeparator4);
 
-        btnSAIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sair.png"))); // NOI18N
-        btnSAIR.setText("Sair");
+        btnSAIR.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/log off.png"))); // NOI18N
         btnSAIR.setFocusable(false);
         btnSAIR.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnSAIR.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -308,7 +314,7 @@ public class UsuarioView extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("CADASTRO DE USUÁRIOS");
+        lblTitulo.setText("CADASTRO DE USUÁRIO");
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(0, 90, 1300, 29);
 
@@ -333,17 +339,10 @@ public class UsuarioView extends javax.swing.JFrame {
 
         edtUSU_SENHA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        comboUSU_ATIVO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboUSU_ATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "INATIVO" }));
 
         lblUSU_ATIVO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         lblUSU_ATIVO.setText("Ativo?");
-
-        lblVALIDACAO_LOGIN.setText("*");
-
-        lblVALIDACAO_SENHA.setText("*");
-
-        lblVALIDACAO_NOME.setText("*");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -351,73 +350,57 @@ public class UsuarioView extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblUSU_ID)
+                    .addComponent(lblUSU_NOME)
+                    .addComponent(lblUSU_LOGIN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblUSU_ID)
+                        .addComponent(edtUSU_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblUSU_SENHA)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtUSU_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblUSU_SENHA)
-                            .addComponent(lblUSU_LOGIN))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(edtUSU_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblVALIDACAO_LOGIN))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(edtUSU_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblVALIDACAO_SENHA))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblUSU_NOME)
-                        .addGap(18, 18, 18)
-                        .addComponent(edtUSU_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 589, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblVALIDACAO_NOME)
-                        .addGap(30, 30, 30)
-                        .addComponent(lblUSU_ATIVO)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboUSU_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(93, Short.MAX_VALUE))
+                        .addComponent(edtUSU_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtUSU_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtUSU_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(lblUSU_ATIVO)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboUSU_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtUSU_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtUSU_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUSU_ID))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edtUSU_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUSU_NOME)
-                    .addComponent(edtUSU_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(comboUSU_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUSU_ATIVO)
-                    .addComponent(lblVALIDACAO_NOME))
-                .addGap(18, 18, 18)
+                    .addComponent(comboUSU_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUSU_ATIVO))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUSU_LOGIN)
-                    .addComponent(edtUSU_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVALIDACAO_LOGIN))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(edtUSU_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblUSU_SENHA)
-                    .addComponent(edtUSU_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblVALIDACAO_SENHA))
-                .addGap(12, 12, 12))
+                    .addComponent(edtUSU_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Dados do Usuário", jPanel1);
 
         getContentPane().add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 110, 960, 190);
+        jTabbedPane1.setBounds(10, 120, 970, 140);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         lblCONS_ID.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblCONS_ID.setText("ID");
+        lblCONS_ID.setText("Código");
 
         edtCONS_ID1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -455,29 +438,27 @@ public class UsuarioView extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCONS_ID)
+                    .addComponent(lblCONS_NOME))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(lblCONS_NOME)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edtCONS_NOME))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(lblCONS_ID)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(edtCONS_ID1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblCodigo2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(edtCONS_ID2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lblCONS_LOGIN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(edtCONS_LOGIN, javax.swing.GroupLayout.DEFAULT_SIZE, 480, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtCONS_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(edtCONS_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnConsulta)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(19, 19, 19))
         );
         jPanel3Layout.setVerticalGroup(
@@ -491,17 +472,21 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addComponent(edtCONS_ID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(edtCONS_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCONS_LOGIN))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtCONS_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCONS_NOME))
-                .addContainerGap())
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(edtCONS_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCONS_NOME)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConsulta)
                     .addComponent(btnLimpar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         jScrollPane2.setViewportView(tblConsulta);
@@ -510,44 +495,45 @@ public class UsuarioView extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 945, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane2.addTab("Consulta", jPanel2);
 
         getContentPane().add(jTabbedPane2);
-        jTabbedPane2.setBounds(10, 350, 960, 290);
+        jTabbedPane2.setBounds(10, 280, 970, 370);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Data Atual:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(1110, 120, 70, 30);
+        jLabel1.setBounds(1110, 130, 70, 30);
 
         lblDATA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(lblDATA);
-        lblDATA.setBounds(1190, 120, 100, 30);
+        lblDATA.setBounds(1190, 130, 100, 30);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Hora Atual:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(1110, 160, 70, 30);
+        jLabel2.setBounds(1110, 170, 70, 30);
 
         lblHORA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         getContentPane().add(lblHORA);
-        lblHORA.setBounds(1190, 160, 100, 30);
+        lblHORA.setBounds(1190, 170, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -569,6 +555,7 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void btnGRAVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGRAVARActionPerformed
         String mensagem;
+        String mensagem2;
         if (JOptionPane.showConfirmDialog(null, "Deseja cadastrar esse usuário?",
                 "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
@@ -583,11 +570,13 @@ public class UsuarioView extends javax.swing.JFrame {
             try {
                 usuariocontroller.gravar(usuariomodel, getOperacao());
                 mensagem = "Usuário cadastrado com sucesso!";
-                consultar();
+                JOptionPane.showMessageDialog(null, mensagem);
+                this.consultar();
             } catch (Exception ex) {
-                mensagem = " Os campos com (*) são obrigátorios \n\n Erro no cadastro do usuário \n" + ex.getMessage();
+                mensagem2 = "Os campos destacados em vermelho são obrigatórios!\n "
+                        + "Erro ao cadastrar o usuário.\n" + ex.getMessage();
+                JOptionPane.showMessageDialog(null, mensagem2, "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null, mensagem );
         }
     }//GEN-LAST:event_btnGRAVARActionPerformed
 
@@ -696,6 +685,7 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void btnEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEXCLUIRActionPerformed
         String mensagem;
+        String mensagem2;
         setOperacao("");
         if (JOptionPane.showConfirmDialog(null, "Deseja excluir esse usuário?",
                 "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -710,25 +700,26 @@ public class UsuarioView extends javax.swing.JFrame {
             try {
                 usuariocontroller.excluir(usuariomodel);
                 mensagem = "Usuário excluído com sucesso!";
-                 consultar();
+                JOptionPane.showMessageDialog(null, mensagem);
+                this.consultar();
             } catch (Exception ex) {
-                mensagem = "Erro na exclusão do usuário \n" + ex.getMessage();
+                mensagem2 = "Erro na exclusão do usuário!\n" + ex.getMessage();
+                JOptionPane.showMessageDialog(null, mensagem2, "Erro", JOptionPane.ERROR_MESSAGE);
             }
-            JOptionPane.showMessageDialog(null, mensagem);
         }
     }//GEN-LAST:event_btnEXCLUIRActionPerformed
 
     private void btnIMPRIMIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPRIMIRActionPerformed
         Exception retorno = usuariocontroller.imprimir();
         if (retorno != null) {
-            JOptionPane.showMessageDialog(null, "Erro ao exibir o relatório de usuários/n" + retorno.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro na exibição do relatório de usuários!\n" + retorno.getMessage());
         }
     }//GEN-LAST:event_btnIMPRIMIRActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //funcionalidade de mostrar a data atual.
-        Calendar c1 = Calendar.getInstance(new Locale("pt", "BR"));
-        lblDATA.setText(c1.get(Calendar.DAY_OF_MONTH) + "/" + c1.get(Calendar.MONTH) + "/" + c1.get(Calendar.YEAR));
+        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+        lblDATA.setText(data.format(new Date()));
         //funcionalidade de mostar a hora atual. 
         Timer time = new Timer(1000, new hora());
         time.start();
@@ -783,9 +774,6 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JLabel lblUSU_LOGIN;
     private javax.swing.JLabel lblUSU_NOME;
     private javax.swing.JLabel lblUSU_SENHA;
-    private javax.swing.JLabel lblVALIDACAO_LOGIN;
-    private javax.swing.JLabel lblVALIDACAO_NOME;
-    private javax.swing.JLabel lblVALIDACAO_SENHA;
     private javax.swing.JTable tblConsulta;
     // End of variables declaration//GEN-END:variables
 

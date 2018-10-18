@@ -166,7 +166,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("MVC - Cadastro de Usuários");
+        setTitle("Sales System - Cadastro de Usuários");
         setFocusable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
@@ -589,7 +589,12 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSAIRActionPerformed
-        dispose();
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?", "Aviso", JOptionPane.YES_NO_OPTION);
+        if (sair == JOptionPane.YES_NO_OPTION) {
+            System.exit(0);
+        } else {
+
+        }
     }//GEN-LAST:event_btnSAIRActionPerformed
 
     private void btnANTERIORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnANTERIORActionPerformed

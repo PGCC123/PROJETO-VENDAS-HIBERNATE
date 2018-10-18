@@ -24,8 +24,11 @@ public class FormMenu extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconePesquisa.png"))); // NOI18N
         menuCadastro.setText("Cadastros");
 
+        miUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
+        miUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconePesquisa.png"))); // NOI18N
         miUsuario.setText("Usuários");
         miUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -37,9 +40,9 @@ public class FormMenu extends javax.swing.JFrame {
         jMenuBar1.add(menuCadastro);
 
         menuSair.setText("Sair");
-        menuSair.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSairActionPerformed(evt);
+        menuSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuSairMouseClicked(evt);
             }
         });
         jMenuBar1.add(menuSair);
@@ -66,9 +69,9 @@ public class FormMenu extends javax.swing.JFrame {
         objusu.setVisible(true);
     }//GEN-LAST:event_miUsuarioActionPerformed
 
-    private void menuSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSairActionPerformed
+    private void menuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseClicked
         System.exit(0);
-    }//GEN-LAST:event_menuSairActionPerformed
+    }//GEN-LAST:event_menuSairMouseClicked
 
     public static void main(String args[]) {
 

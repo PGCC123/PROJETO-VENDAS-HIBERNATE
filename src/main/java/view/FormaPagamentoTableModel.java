@@ -2,15 +2,15 @@ package view;
 
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
-import model.UsuarioModel;
+import model.FormaPagamentoModel;
 
-public class UsuarioTableModel extends AbstractTableModel {
+public class FormaPagamentoTableModel extends AbstractTableModel {
 
-    private ArrayList<UsuarioModel> linhas;
-    String[] colunas = {"CÓDIGO", "NOME", "LOGIN", "ATIVO"};
+    private final ArrayList<FormaPagamentoModel> linhas;
+    String[] colunas = {"CÓDIGO", "NOME", "ATIVO"};
 
-    public UsuarioTableModel(ArrayList<UsuarioModel> arrayusuario) {
-        linhas = arrayusuario;
+    public FormaPagamentoTableModel(ArrayList<FormaPagamentoModel> arrayformapagto) {
+        linhas = arrayformapagto;
     }
 
     //Retorna a quantidade de colunas do modelo, que no caso será fixa
@@ -33,27 +33,25 @@ public class UsuarioTableModel extends AbstractTableModel {
 
     @Override
     public Object getValueAt(int row, int col) {
-        UsuarioModel usuario = (UsuarioModel) linhas.get(row);
+        FormaPagamentoModel formapagto = (FormaPagamentoModel) linhas.get(row);
         switch (col) {
             case 0:
-                return usuario.getUSU_CODIGO();
+                return formapagto.getFPG_CODIGO();
             case 1:
-                return usuario.getUSU_NOME();
+                return formapagto.getFPG_NOME();
             case 2:
-                return usuario.getUSU_LOGIN();
-            case 3:
-                return usuario.getUSU_ATIVO();                
+                return formapagto.getFPG_ATIVO();
             default:
                 return null;
         }
     }
 
-    //Adicionamos várias linhas na tabela de uma vez, recebendo um List de UsuarioModel
-    public void addLista(ArrayList<UsuarioModel> usuario) {
+    //Adicionamos várias linhas na tabela de uma vez, recebendo um List de FormaPagamentoModel
+    public void addLista(ArrayList<FormaPagamentoModel> formapagto) {
         int tamanhoAntigo = getRowCount();
 
-        //Adiciona os usuários
-        linhas.addAll(usuario);
+        //Adiciona as formas de pagamentos
+        linhas.addAll(formapagto);
 
         //Aqui reportamos a mudança para o JTable, assim ele pode se redesenhar, para visualizarmos a alteração
         fireTableRowsInserted(tamanhoAntigo, getRowCount() - 1);

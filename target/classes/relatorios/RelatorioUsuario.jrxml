@@ -6,21 +6,17 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="USU_SENHA" class="java.lang.String">
-		<fieldDescription><![CDATA[USU_SENHA]]></fieldDescription>
+	
+	<field name="FPG_ATIVO" class="java.lang.String">
+		<fieldDescription><![CDATA[FPG_ATIVO]]></fieldDescription>
 	</field>
-	<field name="USU_ATIVO" class="java.lang.String">
-		<fieldDescription><![CDATA[USU_ATIVO]]></fieldDescription>
+	<field name="FPG_CODIGO" class="java.lang.Integer">
+		<fieldDescription><![CDATA[FPG_CODIGO]]></fieldDescription>
 	</field>
-	<field name="USU_CODIGO" class="java.lang.Integer">
-		<fieldDescription><![CDATA[USU_CODIGO]]></fieldDescription>
+	<field name="FPG_NOME" class="java.lang.String">
+		<fieldDescription><![CDATA[FPG_NOME]]></fieldDescription>
 	</field>
-	<field name="USU_NOME" class="java.lang.String">
-		<fieldDescription><![CDATA[USU_NOME]]></fieldDescription>
-	</field>
-	<field name="USU_LOGIN" class="java.lang.String">
-		<fieldDescription><![CDATA[USU_LOGIN]]></fieldDescription>
-	</field>
+	
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -34,7 +30,7 @@
 				<textElement textAlignment="Center">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Relatório de Usuários]]></text>
+				<text><![CDATA[Relatório de Formas de Pagamentos]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
 				<reportElement x="0" y="0" width="100" height="20" uuid="b26959f3-f9c6-409f-9a81-6cb358625c0a"/>
@@ -55,7 +51,7 @@
 		<band height="23" splitType="Stretch">
 			<staticText>
 				<reportElement x="17" y="0" width="100" height="20" uuid="b80a4ca3-3420-436a-93ee-a61664798ed5"/>
-				<text><![CDATA[ID]]></text>
+				<text><![CDATA[CÓDIGO]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="117" y="3" width="100" height="20" uuid="8b1293cf-347f-427e-b299-229da1f48775"/>
@@ -63,7 +59,7 @@
 			</staticText>
 			<staticText>
 				<reportElement x="379" y="3" width="100" height="20" uuid="68d11b5f-89c2-4f7d-960b-c957f450a436"/>
-				<text><![CDATA[LOGIN]]></text>
+				<text><![CDATA[ATIVO]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -71,11 +67,11 @@
 		<band height="38" splitType="Stretch">
 			<textField>
 				<reportElement x="117" y="10" width="251" height="20" uuid="538a5611-bb36-4ff3-a93f-c93acdbcbd79"/>
-				<textFieldExpression><![CDATA[$F{USU_NOME}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{FPG_NOME}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="379" y="10" width="154" height="20" uuid="bd8eb7e3-af2c-47f0-9b3c-1ba96856934f"/>
-				<textFieldExpression><![CDATA[$F{USU_LOGIN}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{FPG_ATIVO}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="17" y="10" width="83" height="20" uuid="cb4cdf26-3f63-4ffd-8c06-cc24227bc40f"/>

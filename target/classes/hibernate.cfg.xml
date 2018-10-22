@@ -12,10 +12,11 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.dialect">org.hibernate.dialect.OracleDialect</property>
 
-    -->
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
-    <property name="hibernate.current_session_context_class">jta</property>
-    <mapping class="model.UsuarioModel"/>
-  </session-factory>
+        -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.current_session_context_class">jta</property>
+        <mapping class="model.UsuarioModel"/>
+        <mapping class="model.FormaPagamentoModel"/>
+    </session-factory>
 </hibernate-configuration>

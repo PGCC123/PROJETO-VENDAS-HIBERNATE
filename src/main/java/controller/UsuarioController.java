@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 import model.UsuarioModel;
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import util.ReportUtils;
 
@@ -21,17 +20,17 @@ public class UsuarioController implements GenericController<UsuarioModel> {
     }
 
     @Override
-    public void incluir(UsuarioModel obj) throws Exception{
+    public void incluir(UsuarioModel obj) throws Exception {
         usuariodao.incluir(obj);
     }
 
     @Override
-    public void alterar(UsuarioModel obj) throws Exception{
+    public void alterar(UsuarioModel obj) throws Exception {
         usuariodao.alterar(obj);
     }
 
     @Override
-    public void excluir(UsuarioModel obj) throws Exception{
+    public void excluir(UsuarioModel obj) throws Exception {
         usuariodao.excluir(obj);
     }
 
@@ -41,7 +40,7 @@ public class UsuarioController implements GenericController<UsuarioModel> {
     }
 
     @Override
-    public void gravar(UsuarioModel obj, String operacao) throws Exception{
+    public void gravar(UsuarioModel obj, String operacao) throws Exception {
         if (operacao.equals("incluir")) {
             incluir(obj);
         } else {
@@ -53,12 +52,12 @@ public class UsuarioController implements GenericController<UsuarioModel> {
     public Exception imprimir() {
         Exception retorno = null;
         InputStream inputStream = getClass().getResourceAsStream("/relatorios/RelatorioUsuario.jasper");
-//        btnPRIMEIRO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/primeiro.png"))); // NOI18N
+   // btnPRIMEIRO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/primeiro.png"))); // NOI18N
 
         Map parametros = new HashMap();
-        
+
         List dados = consultar("");
-        
+
         // criando o datasource com os dados criados
         JRDataSource ds = new JRBeanCollectionDataSource(dados);
 
@@ -67,7 +66,7 @@ public class UsuarioController implements GenericController<UsuarioModel> {
             ReportUtils.openReport("Usuários - Bean Collection Data Source", inputStream, parametros, ds);
 
         } catch (Exception ex) {
-            retorno =  ex;
+            retorno = ex;
         }
         return retorno;
     }

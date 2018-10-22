@@ -1,5 +1,6 @@
 package principal;
 
+import view.FormaPagamentoView;
 import view.UsuarioView;
 
 public class FormMenu extends javax.swing.JFrame {
@@ -8,6 +9,7 @@ public class FormMenu extends javax.swing.JFrame {
         System.out.println(getClass().getResource("/imagens/primeiro.png"));
         initComponents();
         this.setLayout(null);
+        this.setLocationRelativeTo(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -15,20 +17,25 @@ public class FormMenu extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastro = new javax.swing.JMenu();
         miUsuario = new javax.swing.JMenuItem();
+        miFormaPagamento = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jMenuItem1.setText("jMenuItem1");
 
-        menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconePesquisa.png"))); // NOI18N
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        menuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeCliente2.png"))); // NOI18N
         menuCadastro.setText("Cadastros");
 
         miUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
-        miUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconePesquisa.png"))); // NOI18N
+        miUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeCliente2.png"))); // NOI18N
         miUsuario.setText("Usuários");
         miUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -36,6 +43,15 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
         menuCadastro.add(miUsuario);
+
+        miFormaPagamento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_MASK));
+        miFormaPagamento.setText("Forma de Pagamento");
+        miFormaPagamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miFormaPagamentoActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(miFormaPagamento);
 
         jMenuBar1.add(menuCadastro);
 
@@ -53,11 +69,11 @@ public class FormMenu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 700, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 459, Short.MAX_VALUE)
         );
 
         pack();
@@ -72,6 +88,12 @@ public class FormMenu extends javax.swing.JFrame {
     private void menuSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuSairMouseClicked
         System.exit(0);
     }//GEN-LAST:event_menuSairMouseClicked
+
+    private void miFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miFormaPagamentoActionPerformed
+    FormaPagamentoView formapagtoview;
+    formapagtoview =  new FormaPagamentoView();
+    formapagtoview.setVisible(true);
+    }//GEN-LAST:event_miFormaPagamentoActionPerformed
 
     public static void main(String args[]) {
 
@@ -106,8 +128,10 @@ public class FormMenu extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuSair;
+    private javax.swing.JMenuItem miFormaPagamento;
     private javax.swing.JMenuItem miUsuario;
     // End of variables declaration//GEN-END:variables
 }

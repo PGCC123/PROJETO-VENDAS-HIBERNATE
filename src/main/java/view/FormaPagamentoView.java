@@ -18,7 +18,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.FormaPagamentoModel;
 
-
 public class FormaPagamentoView extends javax.swing.JFrame {
 
     private String operacao;
@@ -47,6 +46,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         tblConsulta.getTableHeader().setBackground(Color.GRAY);
         consultar();
+        this.inativarCampos();
         // adiciona evento para que qdo navegar no JTable, atualize o registro nos JTextField´s
         tblConsulta.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
@@ -65,7 +65,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
         this.pack();
     }
 
-   private boolean validacao() {
+    private boolean validacao() {
         String erroMessage = "Campos com * devem ser preenchidos!";
 
         if (edtFPG_NOME.getText() == null || edtFPG_NOME.getText().length() == 0) {
@@ -81,6 +81,16 @@ public class FormaPagamentoView extends javax.swing.JFrame {
         } else {
             return false;
         }
+    }
+
+    public final void inativarCampos() {
+        edtFPG_NOME.setEditable(false);
+        comboFPG_ATIVO.setEnabled(false);
+    }
+
+    public final void ativarCampos() {
+        edtFPG_NOME.setEditable(true);
+        comboFPG_ATIVO.setEnabled(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -367,7 +377,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
         edtCONS_ID2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         btnConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconePesquisa.png"))); // NOI18N
-        btnConsulta.setText("Consulta");
+        btnConsulta.setText("Buscar");
         btnConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultaActionPerformed(evt);
@@ -498,6 +508,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
         limpar();
         setOperacao("incluir");
         edtFPG_NOME.setFocusable(true);
+        this.ativarCampos();
     }//GEN-LAST:event_btnINCLUIRActionPerformed
 
     private void btnGRAVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGRAVARActionPerformed
@@ -506,7 +517,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Deseja cadastrar essa forma de pagamento?",
                 "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-           this.validacao();
+            this.validacao();
             FormaPagamentoModel formapagtomodel = new FormaPagamentoModel();
             formapagtomodel.setFPG_CODIGO(Integer.parseInt(edtFPG_CODIGO.getText()));
             formapagtomodel.setFPG_NOME(edtFPG_NOME.getText());
@@ -516,6 +527,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
                 formapagtocontroller.gravar(formapagtomodel, getOperacao());
                 mensagem = "Forma de pagamento cadastrada com sucesso!";
                 JOptionPane.showMessageDialog(null, mensagem);
+                this.inativarCampos();
                 this.consultar();
             } catch (Exception ex) {
                 mensagem2 = "Os campos demarcados em vermelho são obrigatórios!\n\n "
@@ -527,6 +539,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
 
     private void btnALTERARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnALTERARActionPerformed
         setOperacao("alterar");
+        this.ativarCampos();
     }//GEN-LAST:event_btnALTERARActionPerformed
 
     private void btnConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultaActionPerformed
@@ -635,6 +648,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
                 formapagtocontroller.excluir(formapagtomodel);
                 mensagem = "Forma de pagamento excluído com sucesso!";
                 JOptionPane.showMessageDialog(null, mensagem);
+                this.inativarCampos();
                 this.consultar();
             } catch (Exception ex) {
                 mensagem2 = "Erro na exclusão da forma de pagamento!\n" + ex.getMessage();
@@ -653,7 +667,7 @@ public class FormaPagamentoView extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void btnIMPRIMIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPRIMIRActionPerformed
-            try {
+        try {
             Exception retorno = formapagtocontroller.imprimir();
             if (retorno != null) {
                 JOptionPane.showMessageDialog(null, "Erro na exibição do relatório de formas de pagamentos!\n" + retorno.getMessage());

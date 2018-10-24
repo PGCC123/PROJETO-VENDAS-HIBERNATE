@@ -1,6 +1,7 @@
 package principal;
 
 import view.FormaPagamentoView;
+import view.ProdutoView;
 import view.UsuarioView;
 
 public class FormMenu extends javax.swing.JFrame {
@@ -22,6 +23,7 @@ public class FormMenu extends javax.swing.JFrame {
         menuCadastro = new javax.swing.JMenu();
         miUsuario = new javax.swing.JMenuItem();
         miFormaPagamento = new javax.swing.JMenuItem();
+        miProduto = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
@@ -36,7 +38,7 @@ public class FormMenu extends javax.swing.JFrame {
 
         miUsuario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, java.awt.event.InputEvent.CTRL_MASK));
         miUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/iconeCliente2.png"))); // NOI18N
-        miUsuario.setText("Usuários");
+        miUsuario.setText("Cadastro de Usuários");
         miUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miUsuarioActionPerformed(evt);
@@ -45,13 +47,22 @@ public class FormMenu extends javax.swing.JFrame {
         menuCadastro.add(miUsuario);
 
         miFormaPagamento.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, java.awt.event.InputEvent.CTRL_MASK));
-        miFormaPagamento.setText("Forma de Pagamento");
+        miFormaPagamento.setText("Cadastros de Formas de Pagamentos");
         miFormaPagamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 miFormaPagamentoActionPerformed(evt);
             }
         });
         menuCadastro.add(miFormaPagamento);
+
+        miProduto.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, java.awt.event.InputEvent.CTRL_MASK));
+        miProduto.setText("Cadastro de Produtos");
+        miProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miProdutoActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(miProduto);
 
         jMenuBar1.add(menuCadastro);
 
@@ -95,6 +106,12 @@ public class FormMenu extends javax.swing.JFrame {
     formapagtoview.setVisible(true);
     }//GEN-LAST:event_miFormaPagamentoActionPerformed
 
+    private void miProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miProdutoActionPerformed
+    ProdutoView produtoview;
+    produtoview =  new ProdutoView();
+    produtoview.setVisible(true);
+    }//GEN-LAST:event_miProdutoActionPerformed
+
     public static void main(String args[]) {
 
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -132,6 +149,7 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenuItem miFormaPagamento;
+    private javax.swing.JMenuItem miProduto;
     private javax.swing.JMenuItem miUsuario;
     // End of variables declaration//GEN-END:variables
 }

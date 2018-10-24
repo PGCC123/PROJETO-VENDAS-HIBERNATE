@@ -1,6 +1,6 @@
 package view;
 
-import controller.UsuarioController;
+import controller.ProdutoController;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -16,14 +16,14 @@ import javax.swing.Timer;
 import javax.swing.border.Border;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import model.UsuarioModel;
+import model.ProdutoModel;
 
-public class UsuarioView extends javax.swing.JFrame {
+public class ProdutoView extends javax.swing.JFrame {
 
     private String operacao;
-    private ArrayList<UsuarioModel> array;
-    private UsuarioTableModel mtb;
-    private UsuarioController usuariocontroller;
+    private ArrayList<ProdutoModel> array;
+    private ProdutoTableModel mtb;
+    private ProdutoController produtocontroller;
 
     private String getOperacao() {
         return operacao;
@@ -37,8 +37,8 @@ public class UsuarioView extends javax.swing.JFrame {
         btnGRAVAR.setEnabled(ativar);
     }
 
-    public UsuarioView() {
-        usuariocontroller = new UsuarioController();
+    public ProdutoView() {
+        produtocontroller = new ProdutoController();
         this.setPreferredSize(new Dimension(1300, 700));
 
         initComponents();
@@ -65,31 +65,31 @@ public class UsuarioView extends javax.swing.JFrame {
         this.pack();
     }
 
-    private boolean validacao() {
+    private boolean validacao() { // não completa. 
         String erroMessage = "Campos com * devem ser preenchidos!";
 
-        if (edtUSU_NOME.getText() == null || edtUSU_NOME.getText().length() == 0) {
+        if (edtPRO_NOME.getText() == null || edtPRO_NOME.getText().length() == 0) {
             Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
-            edtUSU_NOME.setBorder(border);
+            edtPRO_NOME.setBorder(border);
         } else {
             Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
-            edtUSU_NOME.setBorder(border);
+            edtPRO_NOME.setBorder(border);
         }
 
-        if (edtUSU_LOGIN.getText() == null || edtUSU_LOGIN.getText().length() == 0) {
+        if (edtPRO_PRECO.getText() == null || edtPRO_PRECO.getText().length() == 0) {
             Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
-            edtUSU_LOGIN.setBorder(border);
+            edtPRO_PRECO.setBorder(border);
         } else {
             Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
-            edtUSU_LOGIN.setBorder(border);
+            edtPRO_PRECO.setBorder(border);
         }
 
-        if (edtUSU_SENHA.getText() == null || edtUSU_SENHA.getText().length() == 0) {
+        if (edtPRO_CUSTO.getText() == null || edtPRO_CUSTO.getText().length() == 0) {
             Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
-            edtUSU_SENHA.setBorder(border);
+            edtPRO_CUSTO.setBorder(border);
         } else {
             Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
-            edtUSU_SENHA.setBorder(border);
+            edtPRO_CUSTO.setBorder(border);
         }
 
         if (erroMessage.length() == 0) {
@@ -98,19 +98,35 @@ public class UsuarioView extends javax.swing.JFrame {
             return false;
         }
     }
-
+    
     public final void inativarCampos() {
-        edtUSU_NOME.setEditable(false);
-        edtUSU_LOGIN.setEditable(false);
-        edtUSU_SENHA.setEditable(false);
-        comboUSU_ATIVO.setEnabled(false);
+        edtPRO_NOME.setEditable(false);
+        edtPRO_ESTOQUE.setEditable(false);
+        edtPRO_UNIDADE.setEditable(false);
+        edtPRO_PRECO.setEditable(false);
+        edtPRO_CUSTO.setEditable(false);
+        edtPRO_ATACADO.setEditable(false);
+        edtPRO_MIN.setEditable(false);
+        edtPRO_MAX.setEditable(false);
+        edtPRO_EMBALAGEM.setEditable(false);
+        edtPRO_PESO.setEditable(false);
+        edtPRO_OBS.setEditable(false);
+        comboPRO_ATIVO.setEnabled(false);
     }
 
     public final void ativarCampos() {
-        edtUSU_NOME.setEditable(true);
-        edtUSU_LOGIN.setEditable(true);
-        edtUSU_SENHA.setEditable(true);
-        comboUSU_ATIVO.setEnabled(true);
+         edtPRO_NOME.setEditable(true);
+        edtPRO_ESTOQUE.setEditable(true);
+        edtPRO_UNIDADE.setEditable(true);
+        edtPRO_PRECO.setEditable(true);
+        edtPRO_CUSTO.setEditable(true);
+        edtPRO_ATACADO.setEditable(true);
+        edtPRO_MIN.setEditable(true);
+        edtPRO_MAX.setEditable(true);
+        edtPRO_EMBALAGEM.setEditable(true);
+        edtPRO_PESO.setEditable(true);
+        edtPRO_OBS.setEditable(true);
+        comboPRO_ATIVO.setEnabled(true);
     }
 
     @SuppressWarnings("unchecked")
@@ -137,16 +153,33 @@ public class UsuarioView extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        lblUSU_ID = new javax.swing.JLabel();
-        lblUSU_NOME = new javax.swing.JLabel();
-        lblUSU_LOGIN = new javax.swing.JLabel();
-        edtUSU_CODIGO = new javax.swing.JTextField();
-        edtUSU_NOME = new javax.swing.JTextField();
-        edtUSU_LOGIN = new javax.swing.JTextField();
-        lblUSU_SENHA = new javax.swing.JLabel();
-        edtUSU_SENHA = new javax.swing.JPasswordField();
-        comboUSU_ATIVO = new javax.swing.JComboBox<>();
-        lblUSU_ATIVO = new javax.swing.JLabel();
+        lblPRO_CODIGO = new javax.swing.JLabel();
+        lblPRO_NOME = new javax.swing.JLabel();
+        lblPRO_PRECO = new javax.swing.JLabel();
+        edtPRO_CODIGO = new javax.swing.JTextField();
+        edtPRO_NOME = new javax.swing.JTextField();
+        edtPRO_PRECO = new javax.swing.JTextField();
+        lblPRO_CUSTO = new javax.swing.JLabel();
+        comboPRO_ATIVO = new javax.swing.JComboBox<>();
+        lblPRO_ATIVO = new javax.swing.JLabel();
+        lblPRO_OBS = new javax.swing.JLabel();
+        lblPRO_ATACADO = new javax.swing.JLabel();
+        lblPRO_MAX = new javax.swing.JLabel();
+        lblPRO_MIN = new javax.swing.JLabel();
+        edtPRO_ATACADO = new javax.swing.JTextField();
+        edtPRO_CUSTO = new javax.swing.JTextField();
+        edtPRO_MAX = new javax.swing.JTextField();
+        edtPRO_MIN = new javax.swing.JTextField();
+        edtPRO_OBS = new javax.swing.JTextField();
+        jPanel5 = new javax.swing.JPanel();
+        lblPRO_ESTOQUE = new javax.swing.JLabel();
+        edtPRO_ESTOQUE = new javax.swing.JTextField();
+        lblPRO_EMBALAGEM = new javax.swing.JLabel();
+        edtPRO_EMBALAGEM = new javax.swing.JTextField();
+        lblPRO_PESO = new javax.swing.JLabel();
+        edtPRO_PESO = new javax.swing.JTextField();
+        edtPRO_UNIDADE = new javax.swing.JTextField();
+        lblPRO_UNIDADE = new javax.swing.JLabel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -158,8 +191,6 @@ public class UsuarioView extends javax.swing.JFrame {
         btnLimpar = new javax.swing.JButton();
         lblCONS_NOME = new javax.swing.JLabel();
         edtCONS_NOME = new javax.swing.JTextField();
-        lblCONS_LOGIN = new javax.swing.JLabel();
-        edtCONS_LOGIN = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblConsulta = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -181,7 +212,7 @@ public class UsuarioView extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Sales System - Cadastro de Usuários");
+        setTitle("Sales System - Cadastro de Produtos");
         setFocusable(false);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -330,85 +361,208 @@ public class UsuarioView extends javax.swing.JFrame {
 
         lblTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("CADASTRO DE USUÁRIO");
+        lblTitulo.setText("CADASTRO DE PRODUTOS");
         getContentPane().add(lblTitulo);
         lblTitulo.setBounds(0, 90, 1300, 29);
 
-        lblUSU_ID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblUSU_ID.setText("Código");
+        lblPRO_CODIGO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_CODIGO.setText("Código");
 
-        lblUSU_NOME.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblUSU_NOME.setText("Nome");
+        lblPRO_NOME.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_NOME.setText("Nome");
 
-        lblUSU_LOGIN.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblUSU_LOGIN.setText("Login");
+        lblPRO_PRECO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_PRECO.setText("Preço");
 
-        edtUSU_CODIGO.setEditable(false);
-        edtUSU_CODIGO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        edtPRO_CODIGO.setEditable(false);
+        edtPRO_CODIGO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        edtUSU_NOME.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        edtPRO_NOME.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        edtUSU_LOGIN.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        edtPRO_PRECO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        lblUSU_SENHA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblUSU_SENHA.setText("Senha");
+        lblPRO_CUSTO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_CUSTO.setText("Custo");
 
-        edtUSU_SENHA.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        comboPRO_ATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "INATIVO" }));
 
-        comboUSU_ATIVO.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "INATIVO" }));
+        lblPRO_ATIVO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_ATIVO.setText("Ativo?");
 
-        lblUSU_ATIVO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        lblUSU_ATIVO.setText("Ativo?");
+        lblPRO_OBS.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_OBS.setText("Obs");
+
+        lblPRO_ATACADO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_ATACADO.setText("Atacado");
+
+        lblPRO_MAX.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_MAX.setText("Max.");
+
+        lblPRO_MIN.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_MIN.setText("Min.");
+
+        edtPRO_ATACADO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        edtPRO_CUSTO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        edtPRO_MAX.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        edtPRO_MIN.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        edtPRO_OBS.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblUSU_ID)
-                    .addComponent(lblUSU_NOME)
-                    .addComponent(lblUSU_LOGIN))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(edtUSU_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblUSU_SENHA)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblPRO_PRECO)
+                            .addComponent(lblPRO_ATACADO))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtUSU_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(edtUSU_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edtUSU_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(lblUSU_ATIVO)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(comboUSU_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(edtPRO_ATACADO, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(202, 202, 202))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(edtPRO_PRECO, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(25, 25, 25)
+                                .addComponent(lblPRO_MAX)
+                                .addGap(151, 151, 151)))
+                        .addGap(65, 65, 65))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPRO_CODIGO)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtPRO_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPRO_NOME)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(edtPRO_MAX, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblPRO_MIN)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(edtPRO_MIN, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(edtPRO_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPRO_CUSTO)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtPRO_CUSTO, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addComponent(lblPRO_OBS)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtPRO_OBS, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblPRO_ATIVO)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboPRO_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(93, 93, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(8, 8, 8)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtUSU_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUSU_ID))
+                    .addComponent(edtPRO_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_CODIGO)
+                    .addComponent(comboPRO_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_ATIVO)
+                    .addComponent(edtPRO_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_NOME)
+                    .addComponent(lblPRO_OBS)
+                    .addComponent(edtPRO_OBS, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(edtUSU_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUSU_NOME)
-                    .addComponent(comboUSU_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUSU_ATIVO))
+                    .addComponent(lblPRO_PRECO)
+                    .addComponent(edtPRO_PRECO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_MIN)
+                    .addComponent(edtPRO_MIN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(edtPRO_MAX, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_MAX)
+                    .addComponent(lblPRO_CUSTO)
+                    .addComponent(edtPRO_CUSTO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUSU_LOGIN)
-                    .addComponent(edtUSU_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblUSU_SENHA)
-                    .addComponent(edtUSU_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                    .addComponent(lblPRO_ATACADO)
+                    .addComponent(edtPRO_ATACADO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Dados do Usuário", jPanel1);
+        jTabbedPane1.addTab("Dados do Produto", jPanel1);
+
+        lblPRO_ESTOQUE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_ESTOQUE.setText("Estoque");
+
+        edtPRO_ESTOQUE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        lblPRO_EMBALAGEM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_EMBALAGEM.setText("Embalagem");
+
+        edtPRO_EMBALAGEM.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        lblPRO_PESO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_PESO.setText("Peso");
+
+        edtPRO_PESO.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        edtPRO_UNIDADE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        lblPRO_UNIDADE.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPRO_UNIDADE.setText("Unidade");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(lblPRO_ESTOQUE)
+                        .addGap(18, 18, 18)
+                        .addComponent(edtPRO_ESTOQUE, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(lblPRO_EMBALAGEM)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(edtPRO_EMBALAGEM, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(lblPRO_PESO)
+                    .addComponent(lblPRO_UNIDADE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(edtPRO_UNIDADE, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                    .addComponent(edtPRO_PESO))
+                .addGap(634, 634, 634))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPRO_UNIDADE)
+                    .addComponent(edtPRO_ESTOQUE, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_ESTOQUE)
+                    .addComponent(edtPRO_UNIDADE, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPRO_EMBALAGEM)
+                    .addComponent(edtPRO_EMBALAGEM, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPRO_PESO)
+                    .addComponent(edtPRO_PESO, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Estoque e Embalagem", jPanel5);
 
         getContentPane().add(jTabbedPane1);
         jTabbedPane1.setBounds(10, 120, 970, 140);
@@ -445,11 +599,6 @@ public class UsuarioView extends javax.swing.JFrame {
 
         edtCONS_NOME.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        lblCONS_LOGIN.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        lblCONS_LOGIN.setText("Login");
-
-        edtCONS_LOGIN.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -466,11 +615,7 @@ public class UsuarioView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblCodigo2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtCONS_ID2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblCONS_LOGIN)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtCONS_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, 427, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(edtCONS_ID2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(edtCONS_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -486,9 +631,7 @@ public class UsuarioView extends javax.swing.JFrame {
                     .addComponent(lblCONS_ID)
                     .addComponent(edtCONS_ID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblCodigo2)
-                    .addComponent(edtCONS_ID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(edtCONS_LOGIN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCONS_LOGIN))
+                    .addComponent(edtCONS_ID2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -557,7 +700,7 @@ public class UsuarioView extends javax.swing.JFrame {
 
     private void btnPRIMEIROActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPRIMEIROActionPerformed
         if (array.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não existem usuários cadastrados!");
+            JOptionPane.showMessageDialog(null, "Não existem produtos cadastrados!");
         } else {
             int selecionado = 0;
             tblConsulta.changeSelection(selecionado, 0, false, false);
@@ -567,33 +710,42 @@ public class UsuarioView extends javax.swing.JFrame {
     private void btnINCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnINCLUIRActionPerformed
         limpar();
         setOperacao("incluir");
-        edtUSU_NOME.setFocusable(true);
+        edtPRO_NOME.setFocusable(true);
         this.ativarCampos();
     }//GEN-LAST:event_btnINCLUIRActionPerformed
 
     private void btnGRAVARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGRAVARActionPerformed
         String mensagem;
         String mensagem2;
-        if (JOptionPane.showConfirmDialog(null, "Deseja cadastrar esse usuário?",
+        if (JOptionPane.showConfirmDialog(null, "Deseja cadastrar esse produto?",
                 "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
             this.validacao();
-            UsuarioModel usuariomodel = new UsuarioModel();
-            usuariomodel.setUSU_CODIGO(Integer.parseInt(edtUSU_CODIGO.getText()));
-            usuariomodel.setUSU_NOME(edtUSU_NOME.getText());
-            usuariomodel.setUSU_LOGIN(edtUSU_LOGIN.getText());
-            usuariomodel.setUSU_SENHA(edtUSU_SENHA.getText());
-            usuariomodel.setUSU_ATIVO(comboUSU_ATIVO.getSelectedItem().toString());
+            ProdutoModel produtomodel = new ProdutoModel();
+            produtomodel.setPRO_CODIGO(Integer.parseInt(edtPRO_CODIGO.getText()));
+            produtomodel.setPRO_NOME(edtPRO_NOME.getText());
+            produtomodel.setPRO_ESTOQUE(Integer.parseInt(edtPRO_ESTOQUE.getText()));
+            produtomodel.setPRO_UNIDADE(Integer.parseInt(edtPRO_UNIDADE.getText()));
+            produtomodel.setPRO_PRECO(Double.parseDouble(edtPRO_PRECO.getText()));
+            produtomodel.setPRO_CUSTO(Double.parseDouble(edtPRO_CUSTO.getText()));
+            produtomodel.setPRO_ATACADO(Double.parseDouble(edtPRO_ATACADO.getText()));
+            produtomodel.setPRO_MIN(Double.parseDouble(edtPRO_MAX.getText()));
+            produtomodel.setPRO_MAX(Double.parseDouble(edtPRO_MAX.getText()));
+            produtomodel.setPRO_EMBALAGEM(Double.parseDouble(edtPRO_EMBALAGEM.getText()));
+            produtomodel.setPRO_PESO(Double.parseDouble(edtPRO_PESO.getText()));
+            //produtomodel.setPRO_CADASTRO(textPRO_CADASTRO.getText());
+            produtomodel.setPRO_OBS(edtPRO_OBS.getText());
+            produtomodel.setPRO_ATIVO(comboPRO_ATIVO.getSelectedItem().toString());
 
             try {
-                usuariocontroller.gravar(usuariomodel, getOperacao());
-                mensagem = "Usuário cadastrado com sucesso!";
+                produtocontroller.gravar(produtomodel, getOperacao());
+                mensagem = "Produto cadastrado com sucesso!";
                 JOptionPane.showMessageDialog(null, mensagem);
                 this.inativarCampos();
                 this.consultar();
             } catch (Exception ex) {
                 mensagem2 = "Os campos destacados em vermelho são obrigatórios!\n "
-                        + "Erro ao cadastrar o usuário.\n" + ex.getMessage();
+                        + "Erro ao cadastrar o produto.\n" + ex.getMessage();
                 JOptionPane.showMessageDialog(null, mensagem2, "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
@@ -625,43 +777,56 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnANTERIORActionPerformed
 
     private void limpar() {
-        edtUSU_CODIGO.setText("0");
-        edtUSU_NOME.setText("");
-        edtUSU_LOGIN.setText("");
-        edtUSU_SENHA.setText("");
+       edtPRO_CODIGO.setText("0");
+        edtPRO_NOME.setText("");
+        edtPRO_ESTOQUE.setText("");
+        edtPRO_UNIDADE.setText("");
+        edtPRO_PRECO.setText("");
+        edtPRO_CUSTO.setText("");
+        edtPRO_ATACADO.setText("");
+        edtPRO_MIN.setText("");
+        edtPRO_MAX.setText("");
+        edtPRO_EMBALAGEM.setText("");
+        edtPRO_PESO.setText("");
+        //textPRO_CADASTRO.setText("");
+        edtPRO_OBS.setText("");
     }
 
-    private void mostrar(UsuarioModel usuario) {
-        edtUSU_CODIGO.setText(String.valueOf(usuario.getUSU_CODIGO()));
-        edtUSU_NOME.setText(usuario.getUSU_NOME());
-        edtUSU_LOGIN.setText(usuario.getUSU_LOGIN());
-        edtUSU_SENHA.setText(usuario.getUSU_SENHA());
-        comboUSU_ATIVO.setSelectedItem(usuario.getUSU_ATIVO());
+    private void mostrar(ProdutoModel produto) {
+        edtPRO_CODIGO.setText(String.valueOf(produto.getPRO_CODIGO()));
+        edtPRO_NOME.setText(produto.getPRO_NOME());
+        edtPRO_ESTOQUE.setText(String.valueOf(produto.getPRO_ESTOQUE()));
+        edtPRO_UNIDADE.setText(String.valueOf(produto.getPRO_UNIDADE()));
+        edtPRO_PRECO.setText(String.valueOf(produto.getPRO_PRECO()));
+        edtPRO_CUSTO.setText(String.valueOf(produto.getPRO_CUSTO()));
+        edtPRO_ATACADO.setText(String.valueOf(produto.getPRO_ATACADO()));
+        edtPRO_MIN.setText(String.valueOf(produto.getPRO_MIN()));
+        edtPRO_MAX.setText(String.valueOf(produto.getPRO_MAX()));
+        edtPRO_EMBALAGEM.setText(String.valueOf(produto.getPRO_EMBALAGEM()));
+        edtPRO_PESO.setText(String.valueOf(produto.getPRO_PESO()));
+        //textPRO_CADASTRO.setText(produto.getPRO_CADASTRO());
+        edtPRO_OBS.setText(produto.getPRO_OBS());
+        comboPRO_ATIVO.setSelectedItem(produto.getPRO_ATIVO());
     }
 
     private String filtrar() {
         String condicao = "";
         if (!edtCONS_ID1.getText().trim().equals("")) {
-            condicao += "(USU_CODIGO >= " + edtCONS_ID1.getText() + ")";
+            condicao += "(PRO_CODIGO >= " + edtCONS_ID1.getText() + ")";
         }
         if (!edtCONS_ID2.getText().trim().equals("")) {
             if (!condicao.isEmpty()) {
                 condicao += " AND ";
             }
-            condicao += "(USU_CODIGO <= " + edtCONS_ID2.getText() + ")";
+            condicao += "(PRO_CODIGO <= " + edtCONS_ID2.getText() + ")";
         }
         if (!edtCONS_NOME.getText().trim().equals("")) {
             if (!condicao.isEmpty()) {
                 condicao += " AND ";
             }
-            condicao += "(USU_NOME LIKE ('%" + edtCONS_NOME.getText() + "%'))";
+            condicao += "(PRO_NOME LIKE ('%" + edtCONS_NOME.getText() + "%'))";
         }
-        if (!edtCONS_LOGIN.getText().trim().equals("")) {
-            if (!condicao.isEmpty()) {
-                condicao += " AND ";
-            }
-            condicao += "(USU_LOGIN LIKE ('%" + edtCONS_LOGIN.getText() + "%'))";
-        }
+
         if (!condicao.trim().equals("")) {
             condicao = " WHERE " + condicao;
         }
@@ -671,11 +836,11 @@ public class UsuarioView extends javax.swing.JFrame {
     private void consultar() {
         String condicao = filtrar();
         array = null;
-        array = usuariocontroller.consultar(condicao);
+        array = produtocontroller.consultar(condicao);
         if (array.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Não existem usuários cadastrados!");
+            JOptionPane.showMessageDialog(null, "Não existem produtos cadastrados!");
         } else {
-            mtb = new UsuarioTableModel(array);
+            mtb =  new ProdutoTableModel(array);
             tblConsulta.setModel(mtb);
             tblConsulta.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             tblConsulta.changeSelection(0, 0, false, false);
@@ -705,7 +870,6 @@ public class UsuarioView extends javax.swing.JFrame {
         edtCONS_ID1.setText("");
         edtCONS_ID2.setText("");
         edtCONS_NOME.setText("");
-        edtCONS_LOGIN.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEXCLUIRActionPerformed
@@ -715,30 +879,39 @@ public class UsuarioView extends javax.swing.JFrame {
         if (JOptionPane.showConfirmDialog(null, "Deseja excluir esse usuário?",
                 "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
 
-            UsuarioModel usuariomodel = new UsuarioModel();
-            usuariomodel.setUSU_CODIGO(Integer.parseInt(edtUSU_CODIGO.getText()));
-            usuariomodel.setUSU_NOME(edtUSU_NOME.getText());
-            usuariomodel.setUSU_LOGIN(edtUSU_LOGIN.getText());
-            usuariomodel.setUSU_SENHA(edtUSU_SENHA.getText());
-            usuariomodel.setUSU_ATIVO(comboUSU_ATIVO.getSelectedItem().toString());
+            ProdutoModel produtomodel = new ProdutoModel();
+            produtomodel.setPRO_CODIGO(Integer.parseInt(edtPRO_CODIGO.getText()));
+            produtomodel.setPRO_NOME(edtPRO_NOME.getText());
+            produtomodel.setPRO_ESTOQUE(Integer.parseInt(edtPRO_ESTOQUE.getText()));
+            produtomodel.setPRO_UNIDADE(Integer.parseInt(edtPRO_UNIDADE.getText()));
+            produtomodel.setPRO_PRECO(Double.parseDouble(edtPRO_PRECO.getText()));
+            produtomodel.setPRO_CUSTO(Double.parseDouble(edtPRO_CUSTO.getText()));
+            produtomodel.setPRO_ATACADO(Double.parseDouble(edtPRO_ATACADO.getText()));
+            produtomodel.setPRO_MIN(Double.parseDouble(edtPRO_MAX.getText()));
+            produtomodel.setPRO_MAX(Double.parseDouble(edtPRO_MAX.getText()));
+            produtomodel.setPRO_EMBALAGEM(Double.parseDouble(edtPRO_EMBALAGEM.getText()));
+            produtomodel.setPRO_PESO(Double.parseDouble(edtPRO_PESO.getText()));
+            //produtomodel.setPRO_CADASTRO(textPRO_CADASTRO.getText());
+            produtomodel.setPRO_OBS(edtPRO_OBS.getText());
+            produtomodel.setPRO_ATIVO(comboPRO_ATIVO.getSelectedItem().toString());
 
             try {
-                usuariocontroller.excluir(usuariomodel);
-                mensagem = "Usuário excluído com sucesso!";
+                produtocontroller.excluir(produtomodel);
+                mensagem = "Produto excluído com sucesso!";
                 JOptionPane.showMessageDialog(null, mensagem);
                 this.inativarCampos();
                 this.consultar();
             } catch (Exception ex) {
-                mensagem2 = "Erro na exclusão do usuário!\n" + ex.getMessage();
+                mensagem2 = "Erro na exclusão do produto!\n" + ex.getMessage();
                 JOptionPane.showMessageDialog(null, mensagem2, "Erro", JOptionPane.ERROR_MESSAGE);
             }
         }
     }//GEN-LAST:event_btnEXCLUIRActionPerformed
 
     private void btnIMPRIMIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPRIMIRActionPerformed
-        Exception retorno = usuariocontroller.imprimir();
+        Exception retorno = produtocontroller.imprimir();
         if (retorno != null) {
-            JOptionPane.showMessageDialog(null, "Erro na exibição do relatório de usuários!\n" + retorno.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro na exibição do relatório de produtos!\n" + retorno.getMessage());
         }
     }//GEN-LAST:event_btnIMPRIMIRActionPerformed
 
@@ -764,20 +937,28 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JButton btnPROXIMO;
     private javax.swing.JButton btnSAIR;
     private javax.swing.JButton btnULTIMO;
-    private javax.swing.JComboBox<String> comboUSU_ATIVO;
+    private javax.swing.JComboBox<String> comboPRO_ATIVO;
     private javax.swing.JTextField edtCONS_ID1;
     private javax.swing.JTextField edtCONS_ID2;
-    private javax.swing.JTextField edtCONS_LOGIN;
     private javax.swing.JTextField edtCONS_NOME;
-    private javax.swing.JTextField edtUSU_CODIGO;
-    private javax.swing.JTextField edtUSU_LOGIN;
-    private javax.swing.JTextField edtUSU_NOME;
-    private javax.swing.JPasswordField edtUSU_SENHA;
+    private javax.swing.JTextField edtPRO_ATACADO;
+    private javax.swing.JTextField edtPRO_CODIGO;
+    private javax.swing.JTextField edtPRO_CUSTO;
+    private javax.swing.JTextField edtPRO_EMBALAGEM;
+    private javax.swing.JTextField edtPRO_ESTOQUE;
+    private javax.swing.JTextField edtPRO_MAX;
+    private javax.swing.JTextField edtPRO_MIN;
+    private javax.swing.JTextField edtPRO_NOME;
+    private javax.swing.JTextField edtPRO_OBS;
+    private javax.swing.JTextField edtPRO_PESO;
+    private javax.swing.JTextField edtPRO_PRECO;
+    private javax.swing.JTextField edtPRO_UNIDADE;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JToolBar.Separator jSeparator1;
@@ -789,17 +970,24 @@ public class UsuarioView extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel lblCONS_ID;
-    private javax.swing.JLabel lblCONS_LOGIN;
     private javax.swing.JLabel lblCONS_NOME;
     private javax.swing.JLabel lblCodigo2;
     private javax.swing.JLabel lblDATA;
     private javax.swing.JLabel lblHORA;
+    private javax.swing.JLabel lblPRO_ATACADO;
+    private javax.swing.JLabel lblPRO_ATIVO;
+    private javax.swing.JLabel lblPRO_CODIGO;
+    private javax.swing.JLabel lblPRO_CUSTO;
+    private javax.swing.JLabel lblPRO_EMBALAGEM;
+    private javax.swing.JLabel lblPRO_ESTOQUE;
+    private javax.swing.JLabel lblPRO_MAX;
+    private javax.swing.JLabel lblPRO_MIN;
+    private javax.swing.JLabel lblPRO_NOME;
+    private javax.swing.JLabel lblPRO_OBS;
+    private javax.swing.JLabel lblPRO_PESO;
+    private javax.swing.JLabel lblPRO_PRECO;
+    private javax.swing.JLabel lblPRO_UNIDADE;
     private javax.swing.JLabel lblTitulo;
-    private javax.swing.JLabel lblUSU_ATIVO;
-    private javax.swing.JLabel lblUSU_ID;
-    private javax.swing.JLabel lblUSU_LOGIN;
-    private javax.swing.JLabel lblUSU_NOME;
-    private javax.swing.JLabel lblUSU_SENHA;
     private javax.swing.JTable tblConsulta;
     // End of variables declaration//GEN-END:variables
 

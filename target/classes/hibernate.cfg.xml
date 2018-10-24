@@ -18,5 +18,6 @@
         <property name="hibernate.current_session_context_class">jta</property>
         <mapping class="model.UsuarioModel"/>
         <mapping class="model.FormaPagamentoModel"/>
+        <mapping class="model.ProdutoModel"/>
     </session-factory>
 </hibernate-configuration>

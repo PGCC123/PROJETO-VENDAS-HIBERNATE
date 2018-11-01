@@ -1,5 +1,6 @@
 package principal;
 
+import view.ClienteView;
 import view.FormaPagamentoView;
 import view.ProdutoView;
 import view.UsuarioView;
@@ -24,6 +25,7 @@ public class FormMenu extends javax.swing.JFrame {
         miUsuario = new javax.swing.JMenuItem();
         miFormaPagamento = new javax.swing.JMenuItem();
         miProduto = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
@@ -63,6 +65,15 @@ public class FormMenu extends javax.swing.JFrame {
             }
         });
         menuCadastro.add(miProduto);
+
+        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem2.setText("Cadastro de Clientes");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(jMenuItem2);
 
         jMenuBar1.add(menuCadastro);
 
@@ -112,12 +123,13 @@ public class FormMenu extends javax.swing.JFrame {
     produtoview.setVisible(true);
     }//GEN-LAST:event_miProdutoActionPerformed
 
-    public static void main(String args[]) {
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        ClienteView clienteview;
+        clienteview = new ClienteView();
+        clienteview.setVisible(true);
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    public static void main(String args[]) {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Windows".equals(info.getName())) {
@@ -146,6 +158,7 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenuItem miFormaPagamento;

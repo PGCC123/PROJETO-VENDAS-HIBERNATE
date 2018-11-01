@@ -583,6 +583,7 @@ public class UsuarioView extends javax.swing.JFrame {
             usuariomodel.setUSU_NOME(edtUSU_NOME.getText());
             usuariomodel.setUSU_LOGIN(edtUSU_LOGIN.getText());
             usuariomodel.setUSU_SENHA(edtUSU_SENHA.getText());
+           // usuariomodel.setUSU_CADASTRO(lblDATA.getText());
             usuariomodel.setUSU_ATIVO(comboUSU_ATIVO.getSelectedItem().toString());
 
             try {
@@ -720,6 +721,7 @@ public class UsuarioView extends javax.swing.JFrame {
             usuariomodel.setUSU_NOME(edtUSU_NOME.getText());
             usuariomodel.setUSU_LOGIN(edtUSU_LOGIN.getText());
             usuariomodel.setUSU_SENHA(edtUSU_SENHA.getText());
+           // usuariomodel.setUSU_CADASTRO(lblDATA.getText());
             usuariomodel.setUSU_ATIVO(comboUSU_ATIVO.getSelectedItem().toString());
 
             try {

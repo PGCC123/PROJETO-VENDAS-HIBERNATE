@@ -92,13 +92,69 @@ public class ProdutoView extends javax.swing.JFrame {
             edtPRO_CUSTO.setBorder(border);
         }
 
+        if (edtPRO_UNIDADE.getText() == null || edtPRO_UNIDADE.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_UNIDADE.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_UNIDADE.setBorder(border);
+        }
+
+        if (edtPRO_ESTOQUE.getText() == null || edtPRO_ESTOQUE.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_ESTOQUE.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_ESTOQUE.setBorder(border);
+        }
+
+        if (edtPRO_EMBALAGEM.getText() == null || edtPRO_EMBALAGEM.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_EMBALAGEM.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_EMBALAGEM.setBorder(border);
+        }
+
+        if (edtPRO_PESO.getText() == null || edtPRO_PESO.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_PESO.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_PESO.setBorder(border);
+        }
+
+        if (edtPRO_ATACADO.getText() == null || edtPRO_ATACADO.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_ATACADO.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_ATACADO.setBorder(border);
+        }
+
+        if (edtPRO_MAX.getText() == null || edtPRO_MAX.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_MAX.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_MAX.setBorder(border);
+        }
+
+        if (edtPRO_MIN.getText() == null || edtPRO_MIN.getText().length() == 0) {
+            Border border = BorderFactory.createLineBorder(Color.RED, (int) 1.5);
+            edtPRO_MIN.setBorder(border);
+        } else {
+            Border border = BorderFactory.createLineBorder(Color.LIGHT_GRAY);
+            edtPRO_MIN.setBorder(border);
+        }
+
         if (erroMessage.length() == 0) {
             return true;
         } else {
             return false;
         }
     }
-    
+
     public final void inativarCampos() {
         edtPRO_NOME.setEditable(false);
         edtPRO_ESTOQUE.setEditable(false);
@@ -115,7 +171,7 @@ public class ProdutoView extends javax.swing.JFrame {
     }
 
     public final void ativarCampos() {
-         edtPRO_NOME.setEditable(true);
+        edtPRO_NOME.setEditable(true);
         edtPRO_ESTOQUE.setEditable(true);
         edtPRO_UNIDADE.setEditable(true);
         edtPRO_PRECO.setEditable(true);
@@ -777,7 +833,7 @@ public class ProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnANTERIORActionPerformed
 
     private void limpar() {
-       edtPRO_CODIGO.setText("0");
+        edtPRO_CODIGO.setText("0");
         edtPRO_NOME.setText("");
         edtPRO_ESTOQUE.setText("");
         edtPRO_UNIDADE.setText("");
@@ -840,7 +896,7 @@ public class ProdutoView extends javax.swing.JFrame {
         if (array.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Não existem produtos cadastrados!");
         } else {
-            mtb =  new ProdutoTableModel(array);
+            mtb = new ProdutoTableModel(array);
             tblConsulta.setModel(mtb);
             tblConsulta.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             tblConsulta.changeSelection(0, 0, false, false);

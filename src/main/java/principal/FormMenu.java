@@ -2,6 +2,7 @@ package principal;
 
 import view.ClienteView;
 import view.FormaPagamentoView;
+import view.FornecedorView;
 import view.ProdutoView;
 import view.UsuarioView;
 
@@ -25,7 +26,8 @@ public class FormMenu extends javax.swing.JFrame {
         miUsuario = new javax.swing.JMenuItem();
         miFormaPagamento = new javax.swing.JMenuItem();
         miProduto = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        miCliente = new javax.swing.JMenuItem();
+        miFornecedor = new javax.swing.JMenuItem();
         menuSair = new javax.swing.JMenu();
 
         jMenu3.setText("jMenu3");
@@ -66,14 +68,23 @@ public class FormMenu extends javax.swing.JFrame {
         });
         menuCadastro.add(miProduto);
 
-        jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
-        jMenuItem2.setText("Cadastro de Clientes");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        miCliente.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.CTRL_MASK));
+        miCliente.setText("Cadastro de Clientes");
+        miCliente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                miClienteActionPerformed(evt);
             }
         });
-        menuCadastro.add(jMenuItem2);
+        menuCadastro.add(miCliente);
+
+        miFornecedor.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, java.awt.event.InputEvent.CTRL_MASK));
+        miFornecedor.setText("Cadastro de Fornecedores");
+        miFornecedor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                miFornecedorActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(miFornecedor);
 
         jMenuBar1.add(menuCadastro);
 
@@ -112,22 +123,28 @@ public class FormMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSairMouseClicked
 
     private void miFormaPagamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miFormaPagamentoActionPerformed
-    FormaPagamentoView formapagtoview;
-    formapagtoview =  new FormaPagamentoView();
-    formapagtoview.setVisible(true);
+        FormaPagamentoView formapagtoview;
+        formapagtoview = new FormaPagamentoView();
+        formapagtoview.setVisible(true);
     }//GEN-LAST:event_miFormaPagamentoActionPerformed
 
     private void miProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miProdutoActionPerformed
-    ProdutoView produtoview;
-    produtoview =  new ProdutoView();
-    produtoview.setVisible(true);
+        ProdutoView produtoview;
+        produtoview = new ProdutoView();
+        produtoview.setVisible(true);
     }//GEN-LAST:event_miProdutoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void miClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miClienteActionPerformed
         ClienteView clienteview;
         clienteview = new ClienteView();
         clienteview.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_miClienteActionPerformed
+
+    private void miFornecedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miFornecedorActionPerformed
+        FornecedorView fornecdorview;
+        fornecdorview = new FornecedorView();
+        fornecdorview.setVisible(true);
+    }//GEN-LAST:event_miFornecedorActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -146,7 +163,7 @@ public class FormMenu extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FormMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new FormMenu().setVisible(true);
@@ -158,10 +175,11 @@ public class FormMenu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenu menuCadastro;
     private javax.swing.JMenu menuSair;
+    private javax.swing.JMenuItem miCliente;
     private javax.swing.JMenuItem miFormaPagamento;
+    private javax.swing.JMenuItem miFornecedor;
     private javax.swing.JMenuItem miProduto;
     private javax.swing.JMenuItem miUsuario;
     // End of variables declaration//GEN-END:variables

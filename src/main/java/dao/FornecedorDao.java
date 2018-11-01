@@ -1,54 +1,54 @@
 package dao;
 
 import java.util.ArrayList;
-import model.ClienteModel;
+import model.FornecedorModel;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import util.HibernateUtil;
 
-public class ClienteDao implements GenericDao<ClienteModel> {
-
+public class FornecedorDao implements GenericDao<FornecedorModel> {
+        
     @Override
-    public void incluir(ClienteModel cliente) throws Exception {
+    public void incluir(FornecedorModel fornecedor) throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        session.save(cliente);
+        session.save(fornecedor);
         t.commit();
         session.close();
     }
 
     @Override
-    public void alterar(ClienteModel cliente) throws Exception {
+    public void alterar(FornecedorModel fornecedor) throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        session.update(cliente);
+        session.update(fornecedor);
         t.commit();
         session.close();
     }
 
     @Override
-    public ArrayList<ClienteModel> consultar(String filtro) {
-        String sql = "from  ClienteModel c inner join fetch c.pessoamodel as p " + filtro;
+    public ArrayList<FornecedorModel> consultar(String filtro) {
+        String sql = "from  FornecedorModel f inner join fetch f.pessoamodel as p " + filtro;
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        ArrayList lista = (ArrayList<ClienteModel>) session.createQuery(sql).list();
+        ArrayList lista = (ArrayList<FornecedorModel>) session.createQuery(sql).list();
         t.commit();
         session.close();
         return lista;
     }
 
     @Override
-    public void excluir(ClienteModel cliente) throws Exception {
+    public void excluir(FornecedorModel fornecedor) throws Exception {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        session.delete(cliente);
+        session.delete(fornecedor);
         t.commit();
         session.close();
     }
 
     @Override
-    public ClienteModel get(long id) {
+    public FornecedorModel get(long id) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        return (ClienteModel) session.load(ClienteModel.class, id);
+        return (FornecedorModel) session.load(FornecedorModel.class, id);
     }
 }

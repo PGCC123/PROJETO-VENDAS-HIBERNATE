@@ -18,7 +18,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import model.FormaPagamentoModel;
 
-public class FormaPagamentoView extends javax.swing.JFrame {
+public class FormaPagamentoView extends IMenu {
 
     private String operacao;
     private ArrayList<FormaPagamentoModel> array;
@@ -547,9 +547,14 @@ public class FormaPagamentoView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSAIRActionPerformed
-        int sair = JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?", "Aviso", JOptionPane.YES_NO_OPTION);
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja realizar log off?", "Aviso", JOptionPane.YES_NO_OPTION);
         if (sair == JOptionPane.YES_NO_OPTION) {
-            System.exit(0);
+            
+            dispose();
+            LoginView loginview;
+            loginview = new LoginView();
+            loginview.setVisible(true);
+
         } else {
 
         }

@@ -1,5 +1,6 @@
 package model;
 
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,9 +25,8 @@ public class UsuarioModel implements java.io.Serializable {
     @Column(name = "USU_SENHA", nullable = false, length = 10)
     private String USU_SENHA;
     
-    //@Temporal(TemporalType.DATE)
-    //@Column(name = "USU_CADASTRO", nullable = false, length = 7)
-   // private String USU_CADASTRO;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date USU_CADASTRO = new java.sql.Date(System.currentTimeMillis());
 
     @Column(name = "USU_ATIVO", precision = 1)
     private String USU_ATIVO;
@@ -39,12 +39,11 @@ public class UsuarioModel implements java.io.Serializable {
     public UsuarioModel() {
     }
 
-    public UsuarioModel(int USU_CODIGO, String USU_NOME, String USU_LOGIN, String USU_SENHA,  String USU_ATIVO) {
+    public UsuarioModel(int USU_CODIGO, String USU_NOME, String USU_LOGIN, String USU_SENHA, String USU_ATIVO) {
         this.USU_CODIGO = USU_CODIGO;
         this.USU_NOME = USU_NOME;
         this.USU_LOGIN = USU_LOGIN;
         this.USU_SENHA = USU_SENHA;
-        //this.USU_CADASTRO = USU_CADASTRO;
         this.USU_ATIVO = USU_ATIVO;
     }
 
@@ -80,13 +79,13 @@ public class UsuarioModel implements java.io.Serializable {
         this.USU_SENHA = USU_SENHA;
     }
 
-  /* public String getUSU_CADASTRO() {
+  public Date getUSU_CADASTRO() {
         return USU_CADASTRO;
     }
 
-    public void setUSU_CADASTRO(String USU_CADASTRO) {
+    public void setUSU_CADASTRO(Date USU_CADASTRO) {
         this.USU_CADASTRO = USU_CADASTRO;
-    } */
+    } 
 
     public String getUSU_ATIVO() {
         return USU_ATIVO;

@@ -15,7 +15,7 @@ public class FormaPagamentoModel implements java.io.Serializable {
 
     @Column(name = "FPG_NOME", nullable = false, length = 50)
     private String FPG_NOME;
-
+    
     @Column(name = "FPG_ATIVO", precision = 1)
     private String FPG_ATIVO;
 

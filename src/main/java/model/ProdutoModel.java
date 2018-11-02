@@ -1,10 +1,13 @@
 package model;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "PRODUTO")
@@ -44,7 +47,9 @@ public class ProdutoModel implements Serializable {
     @Column(name = "PRO_PESO", nullable = false, precision = 10, scale = 0)
     private double PRO_PESO;
 
-    //private String PRO_CADASTRO;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date PRO_CADASTRO = new java.sql.Date(System.currentTimeMillis());
+
     @Column(name = "PRO_OBS", nullable = false, length = 100)
     private String PRO_OBS;
 
@@ -161,6 +166,14 @@ public class ProdutoModel implements Serializable {
 
     public void setPRO_PESO(double PRO_PESO) {
         this.PRO_PESO = PRO_PESO;
+    }
+
+    public Date getPRO_CADASTRO() {
+        return PRO_CADASTRO;
+    }
+
+    public void setPRO_CADASTRO(Date PRO_CADASTRO) {
+        this.PRO_CADASTRO = PRO_CADASTRO;
     }
 
     public String getPRO_OBS() {

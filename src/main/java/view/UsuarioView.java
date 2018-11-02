@@ -583,7 +583,7 @@ public class UsuarioView extends javax.swing.JFrame {
             usuariomodel.setUSU_NOME(edtUSU_NOME.getText());
             usuariomodel.setUSU_LOGIN(edtUSU_LOGIN.getText());
             usuariomodel.setUSU_SENHA(edtUSU_SENHA.getText());
-           // usuariomodel.setUSU_CADASTRO(lblDATA.getText());
+            // usuariomodel.setUSU_CADASTRO(lblDATA.getText());
             usuariomodel.setUSU_ATIVO(comboUSU_ATIVO.getSelectedItem().toString());
 
             try {
@@ -610,9 +610,14 @@ public class UsuarioView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSAIRActionPerformed
-        int sair = JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?", "Aviso", JOptionPane.YES_NO_OPTION);
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja realizar log off?", "Aviso", JOptionPane.YES_NO_OPTION);
         if (sair == JOptionPane.YES_NO_OPTION) {
-            System.exit(0);
+
+            dispose();
+            LoginView loginview;
+            loginview = new LoginView();
+            loginview.setVisible(true);
+
         } else {
 
         }
@@ -721,7 +726,7 @@ public class UsuarioView extends javax.swing.JFrame {
             usuariomodel.setUSU_NOME(edtUSU_NOME.getText());
             usuariomodel.setUSU_LOGIN(edtUSU_LOGIN.getText());
             usuariomodel.setUSU_SENHA(edtUSU_SENHA.getText());
-           // usuariomodel.setUSU_CADASTRO(lblDATA.getText());
+            // usuariomodel.setUSU_CADASTRO(lblDATA.getText());
             usuariomodel.setUSU_ATIVO(comboUSU_ATIVO.getSelectedItem().toString());
 
             try {

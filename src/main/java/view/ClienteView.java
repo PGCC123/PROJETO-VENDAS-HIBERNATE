@@ -19,7 +19,7 @@ import javax.swing.event.ListSelectionListener;
 import model.ClienteModel;
 import model.PessoaModel;
 
-public class ClienteView extends javax.swing.JFrame {
+public class ClienteView extends IMenu {
 
     private String operacao;
     private ArrayList<ClienteModel> array;
@@ -37,7 +37,6 @@ public class ClienteView extends javax.swing.JFrame {
         btnGRAVAR.setEnabled(ativar);
         btnGRAVAR.setEnabled(ativar);
 
-       
     }
 
     public ClienteView() {
@@ -955,9 +954,14 @@ public class ClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnConsultaActionPerformed
 
     private void btnSAIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSAIRActionPerformed
-        int sair = JOptionPane.showConfirmDialog(null, "Deseja sair do sistema?", "Aviso", JOptionPane.YES_NO_OPTION);
+        int sair = JOptionPane.showConfirmDialog(null, "Deseja realizar log off?", "Aviso", JOptionPane.YES_NO_OPTION);
         if (sair == JOptionPane.YES_NO_OPTION) {
-            System.exit(0);
+
+            dispose();
+            LoginView loginview;
+            loginview = new LoginView();
+            loginview.setVisible(true);
+
         } else {
 
         }
@@ -1075,7 +1079,7 @@ public class ClienteView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnEXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEXCLUIRActionPerformed
-       String mensagem;
+        String mensagem;
         String mensagem2;
         if (JOptionPane.showConfirmDialog(null, "Deseja cadastrar esse cliente?",
                 "Confirmação", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
@@ -1111,13 +1115,13 @@ public class ClienteView extends javax.swing.JFrame {
                 mensagem = "Cliente cadastrado com sucesso!";
                 JOptionPane.showMessageDialog(null, mensagem);
                 this.inativarCampos();
-                this.consultar(); 
+                this.consultar();
             } catch (Exception ex) {
                 mensagem2 = "Os campos destacados em vermelho são obrigatórios!\n "
                         + "Erro ao cadastrar o cliente.\n" + ex.getMessage();
                 JOptionPane.showMessageDialog(null, mensagem2, "Erro", JOptionPane.ERROR_MESSAGE);
             }
-        } 
+        }
     }//GEN-LAST:event_btnEXCLUIRActionPerformed
 
     private void btnIMPRIMIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIMPRIMIRActionPerformed

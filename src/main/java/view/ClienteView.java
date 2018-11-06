@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -25,6 +26,7 @@ public class ClienteView extends IMenu {
     private ArrayList<ClienteModel> array;
     private ClienteTableModel mtb;
     private ClienteController clientecontroller;
+    private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
 
     private String getOperacao() {
         return operacao;
@@ -479,28 +481,31 @@ public class ClienteView extends IMenu {
                         .addComponent(edtCLI_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(edtPES_CODIGO, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(edtCLI_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(lblCLI_RG)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(edtCLI_RG, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(lblCLI_ATIVO)
-                            .addGap(18, 18, 18)
-                            .addComponent(comboCLI_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                            .addComponent(edtCLI_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(lblCLI_LIMITECRED)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(edtCLI_LIMITECRED, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(lblCLI_FISICA)
-                            .addGap(18, 18, 18)
-                            .addComponent(comboCLI_FISICA, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(319, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(edtCLI_CPF, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblCLI_RG)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(edtCLI_RG, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(edtCLI_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lblCLI_LIMITECRED)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(edtCLI_LIMITECRED, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCLI_ATIVO)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboCLI_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(lblCLI_FISICA)
+                                .addGap(18, 18, 18)
+                                .addComponent(comboCLI_FISICA, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(264, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -994,6 +999,8 @@ public class ClienteView extends IMenu {
     }
 
     private void mostrar(ClienteModel cliente) {
+        
+                
         edtCLI_CODIGO.setText(String.valueOf(cliente.getCLI_CODIGO()));
         edtPES_CODIGO.setText(String.valueOf(cliente.getPessoamodel().getPES_CODIGO()));
         edtCLI_NOME.setText(cliente.getPessoamodel().getPES_NOME());
@@ -1012,7 +1019,7 @@ public class ClienteView extends IMenu {
         edtCLI_CELULAR.setText(cliente.getPessoamodel().getPES_CELULAR());
         edtCLI_EMAIL.setText(cliente.getPessoamodel().getPES_EMAIL());
         comboCLI_ATIVO.setSelectedItem(cliente.getPessoamodel().getPES_ATIVO());
-        edtCLI_LIMITECRED.setText(String.valueOf(cliente.getCLI_LIMITECRED()));
+        edtCLI_LIMITECRED.setText(String.valueOf(NFC.format(cliente.getCLI_LIMITECRED())));
     }
 
     private String filtrar() {

@@ -289,32 +289,39 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="edtPES_CODIGO" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="edtCLI_CPF" min="-2" pref="162" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblCLI_RG" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="edtCLI_RG" min="-2" pref="162" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="lblCLI_ATIVO" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="comboCLI_ATIVO" min="-2" pref="99" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="edtCLI_CPF" min="-2" pref="162" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="lblCLI_RG" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="edtCLI_RG" min="-2" pref="162" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="edtCLI_NOME" min="-2" pref="206" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="lblCLI_LIMITECRED" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="edtCLI_LIMITECRED" min="-2" pref="111" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="edtCLI_NOME" min="-2" pref="206" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="lblCLI_LIMITECRED" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="edtCLI_LIMITECRED" min="-2" pref="70" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="lblCLI_FISICA" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="comboCLI_FISICA" min="-2" pref="99" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <Component id="lblCLI_ATIVO" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="comboCLI_ATIVO" min="-2" pref="99" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="lblCLI_FISICA" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="comboCLI_FISICA" min="-2" pref="99" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace pref="319" max="32767" attributes="0"/>
+                      <EmptySpace pref="264" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

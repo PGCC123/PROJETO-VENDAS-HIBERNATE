@@ -1,5 +1,6 @@
 package view;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.FornecedorModel;
@@ -7,7 +8,8 @@ import model.FornecedorModel;
 public class FornecedorTableModel extends AbstractTableModel {
 
     private final ArrayList<FornecedorModel> linhas;
-    String[] colunas = {"CÓDIGO", "NOME FANTASIA", "CNPJ", "INSCRIÇÃO ESTADUAL", "TELEFONE", "ATIVO"};
+    private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    String[] colunas = {"CÓDIGO", "NOME FANTASIA", "CNPJ", "INSCRIÇÃO ESTADUAL", "TELEFONE", "CADASTRO", "ATIVO"};
 
     public FornecedorTableModel(ArrayList<FornecedorModel> arrayfornecedor) {
         linhas = arrayfornecedor;
@@ -46,6 +48,8 @@ public class FornecedorTableModel extends AbstractTableModel {
             case 4:
                 return fornecedor.getPessoamodel().getPES_FONE1();
             case 5:
+                return SDF.format(fornecedor.getPessoamodel().getPES_CADASTRO());
+            case 6:
                 return fornecedor.getPessoamodel().getPES_ATIVO();
             default:
                 return null;

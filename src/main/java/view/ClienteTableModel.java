@@ -1,5 +1,7 @@
 package view;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.ClienteModel;
@@ -7,7 +9,9 @@ import model.ClienteModel;
 public class ClienteTableModel extends AbstractTableModel {
 
     private final ArrayList<ClienteModel> linhas;
-    String[] colunas = {"CÓDIGO", "NOME", "CPF", "TELEFONE", "LIMITE DE CRÉDITO", "ATIVO"};
+    private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
+    String[] colunas = {"CÓDIGO", "NOME", "CPF", "TELEFONE", "LIMITE DE CRÉDITO", "CADASTRO", "ATIVO"};
 
     public ClienteTableModel(ArrayList<ClienteModel> arraycliente) {
         linhas = arraycliente;
@@ -44,8 +48,10 @@ public class ClienteTableModel extends AbstractTableModel {
             case 3:
                 return cliente.getPessoamodel().getPES_FONE1();
             case 4:
-                return cliente.getCLI_LIMITECRED();
+                return NFC.format(cliente.getCLI_LIMITECRED());
             case 5:
+                return SDF.format(cliente.getPessoamodel().getPES_CADASTRO());
+            case 6:
                 return cliente.getPessoamodel().getPES_ATIVO();
             default:
                 return null;

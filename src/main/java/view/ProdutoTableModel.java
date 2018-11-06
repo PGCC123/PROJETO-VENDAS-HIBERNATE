@@ -1,5 +1,7 @@
 package view;
 
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.ProdutoModel;
@@ -7,7 +9,9 @@ import model.ProdutoModel;
 public class ProdutoTableModel extends AbstractTableModel {
 
     private final ArrayList<ProdutoModel> linhas;
-    String[] colunas = {"CÓDIGO", "NOME", "ESTOQUE", "UNIDADE", "PREÇO", "CUSTO", "ATACADO", "MIN", "MAX", "EMBALAGEM", "PESO", "OBS", "ATIVO"};
+    private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
+    private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    String[] colunas = {"CÓDIGO", "NOME", "ESTOQUE", "UNIDADE", "PREÇO", "CUSTO", "ATACADO", "MIN", "MAX", "EMBALAGEM", "PESO", "CADASTRO",  "ATIVO"};
 
     public ProdutoTableModel(ArrayList<ProdutoModel> arrayproduto) {
         linhas = arrayproduto;
@@ -44,23 +48,21 @@ public class ProdutoTableModel extends AbstractTableModel {
             case 3:
                 return produto.getPRO_UNIDADE();
             case 4:
-                return produto.getPRO_PRECO();
+                return NFC.format(produto.getPRO_PRECO());
             case 5:
-                return produto.getPRO_CUSTO();
+                return NFC.format(produto.getPRO_CUSTO());
             case 6:
-                return produto.getPRO_ATACADO();
+                return NFC.format(produto.getPRO_ATACADO());
             case 7:
-                return produto.getPRO_MIN();
+                return NFC.format(produto.getPRO_MIN());
             case 8:
-                return produto.getPRO_MAX();
+                return NFC.format(produto.getPRO_MAX());
             case 9:
                 return produto.getPRO_EMBALAGEM();
             case 10:
                 return produto.getPRO_PESO();
-            // case 11:
-            //return produto.getPRO_CADASTRO();
             case 11:
-                return produto.getPRO_OBS();
+                return SDF.format(produto.getPRO_CADASTRO());
             case 12:
                 return produto.getPRO_ATIVO();
             default:

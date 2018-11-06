@@ -1,13 +1,15 @@
 package view;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.UsuarioModel;
 
 public class UsuarioTableModel extends AbstractTableModel {
 
-    private ArrayList<UsuarioModel> linhas;
-    String[] colunas = {"CÓDIGO", "NOME", "LOGIN", "ATIVO"};
+    private final ArrayList<UsuarioModel> linhas;
+    private final SimpleDateFormat SDF = new SimpleDateFormat("dd/MM/yyyy");
+    String[] colunas = {"CÓDIGO", "NOME", "LOGIN", "CADASTRO", "ATIVO"};
 
     public UsuarioTableModel(ArrayList<UsuarioModel> arrayusuario) {
         linhas = arrayusuario;
@@ -42,6 +44,8 @@ public class UsuarioTableModel extends AbstractTableModel {
             case 2:
                 return usuario.getUSU_LOGIN();
             case 3:
+                return SDF.format(usuario.getUSU_CADASTRO());
+            case 4:
                 return usuario.getUSU_ATIVO();                
             default:
                 return null;

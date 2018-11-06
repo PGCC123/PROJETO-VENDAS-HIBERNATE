@@ -4,19 +4,11 @@ import conexao.Conexao;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
-import view.ClienteView;
-import view.FormaPagamentoView;
-import view.FornecedorView;
 import view.LoginView;
 
-
 public class principal {
-
     Conexao objconexao;
     LoginView loginview;
-    FormaPagamentoView formapagtoview;
-    ClienteView clienteview;
-    FornecedorView fornecedorview;
 
     public principal() {
         try {

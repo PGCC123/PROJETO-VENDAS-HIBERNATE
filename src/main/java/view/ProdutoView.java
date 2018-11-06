@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,6 +25,7 @@ public class ProdutoView extends IMenu {
     private ArrayList<ProdutoModel> array;
     private ProdutoTableModel mtb;
     private ProdutoController produtocontroller;
+        private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
 
     private String getOperacao() {
         return operacao;
@@ -472,8 +474,8 @@ public class ProdutoView extends IMenu {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(lblPRO_PRECO)
@@ -488,8 +490,8 @@ public class ProdutoView extends IMenu {
                                 .addGap(25, 25, 25)
                                 .addComponent(lblPRO_MAX)
                                 .addGap(151, 151, 151)))
-                        .addGap(65, 65, 65))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(115, 115, 115))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(lblPRO_CODIGO)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -499,28 +501,28 @@ public class ProdutoView extends IMenu {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(edtPRO_MAX, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(edtPRO_MAX, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblPRO_MIN)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(edtPRO_MIN, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(edtPRO_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(edtPRO_MIN))
+                            .addComponent(edtPRO_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(lblPRO_CUSTO)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtPRO_CUSTO, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(edtPRO_CUSTO, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
+                        .addGap(10, 10, 10)
                         .addComponent(lblPRO_OBS)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(edtPRO_OBS, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(lblPRO_ATIVO)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(comboPRO_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(93, 93, Short.MAX_VALUE))
+                        .addComponent(edtPRO_OBS, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(lblPRO_ATIVO)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(comboPRO_ATIVO, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(61, 61, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -789,7 +791,6 @@ public class ProdutoView extends IMenu {
             produtomodel.setPRO_MAX(Double.parseDouble(edtPRO_MAX.getText()));
             produtomodel.setPRO_EMBALAGEM(Double.parseDouble(edtPRO_EMBALAGEM.getText()));
             produtomodel.setPRO_PESO(Double.parseDouble(edtPRO_PESO.getText()));
-            //produtomodel.setPRO_CADASTRO(textPRO_CADASTRO.getText());
             produtomodel.setPRO_OBS(edtPRO_OBS.getText());
             produtomodel.setPRO_ATIVO(comboPRO_ATIVO.getSelectedItem().toString());
 
@@ -849,7 +850,6 @@ public class ProdutoView extends IMenu {
         edtPRO_MAX.setText("");
         edtPRO_EMBALAGEM.setText("");
         edtPRO_PESO.setText("");
-        //textPRO_CADASTRO.setText("");
         edtPRO_OBS.setText("");
     }
 
@@ -858,14 +858,13 @@ public class ProdutoView extends IMenu {
         edtPRO_NOME.setText(produto.getPRO_NOME());
         edtPRO_ESTOQUE.setText(String.valueOf(produto.getPRO_ESTOQUE()));
         edtPRO_UNIDADE.setText(String.valueOf(produto.getPRO_UNIDADE()));
-        edtPRO_PRECO.setText(String.valueOf(produto.getPRO_PRECO()));
-        edtPRO_CUSTO.setText(String.valueOf(produto.getPRO_CUSTO()));
-        edtPRO_ATACADO.setText(String.valueOf(produto.getPRO_ATACADO()));
-        edtPRO_MIN.setText(String.valueOf(produto.getPRO_MIN()));
-        edtPRO_MAX.setText(String.valueOf(produto.getPRO_MAX()));
+        edtPRO_PRECO.setText(String.valueOf(NFC.format(produto.getPRO_PRECO())));
+        edtPRO_CUSTO.setText(String.valueOf(NFC.format(produto.getPRO_CUSTO())));
+        edtPRO_ATACADO.setText(String.valueOf(NFC.format(produto.getPRO_ATACADO())));
+        edtPRO_MIN.setText(String.valueOf(NFC.format(produto.getPRO_MIN())));
+        edtPRO_MAX.setText(String.valueOf(NFC.format(produto.getPRO_MAX())));
         edtPRO_EMBALAGEM.setText(String.valueOf(produto.getPRO_EMBALAGEM()));
         edtPRO_PESO.setText(String.valueOf(produto.getPRO_PESO()));
-        //textPRO_CADASTRO.setText(produto.getPRO_CADASTRO());
         edtPRO_OBS.setText(produto.getPRO_OBS());
         comboPRO_ATIVO.setSelectedItem(produto.getPRO_ATIVO());
     }

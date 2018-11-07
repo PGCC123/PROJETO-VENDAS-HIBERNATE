@@ -1046,6 +1046,7 @@ public class FornecedorView extends IMenu {
         edtFOR_CONTATO.setText("");
         edtFOR_FANTASIA.setText("");
         edtFOR_EMAIL.setText("");
+        edtFOR_SITE.setText("");
     }
 
     private void mostrar(FornecedorModel fornecedor) {
@@ -1068,7 +1069,7 @@ public class FornecedorView extends IMenu {
         edtFOR_EMAIL.setText(fornecedor.getPessoamodel().getPES_EMAIL());
         comboFOR_ATIVO.setSelectedItem(fornecedor.getPessoamodel().getPES_ATIVO());
         edtFOR_FANTASIA.setText(String.valueOf(fornecedor.getPessoamodel().getPES_FANTASIA()));
-        edtFOR_SITE.setText(String.valueOf(fornecedor.getPessoamodel().getPES_SITE()));
+        edtFOR_SITE.setText(fornecedor.getPessoamodel().getPES_SITE());
     }
 
     private String filtrar() {

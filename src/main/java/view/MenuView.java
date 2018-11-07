@@ -224,7 +224,7 @@ public class MenuView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSAIRActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-         //funcionalidade de mostrar a data atual.
+        //funcionalidade de mostrar a data atual.
         SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
         lblDATA.setText(data.format(new Date()));
         //funcionalidade de mostar a hora atual. 
@@ -247,10 +247,9 @@ public class MenuView extends javax.swing.JFrame {
     private javax.swing.JLabel lblDATA;
     private javax.swing.JLabel lblHORA;
     // End of variables declaration//GEN-END:variables
-   
+
     //classe interna com funcionalidade de mostrar a hora atual.
     class hora implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent event) {
             Calendar now = Calendar.getInstance();

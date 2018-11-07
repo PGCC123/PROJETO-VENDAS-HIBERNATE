@@ -34,7 +34,6 @@ public class ClienteView extends IMenu {
 
     private void setOperacao(String operacao) {
         Boolean ativar = (operacao.equals("") ? false : true);
-        // operacao=""(consulta), operacao="incluir"(inclusão), operacao="alterar"(alteração)
         this.operacao = operacao;
         btnGRAVAR.setEnabled(ativar);
         btnGRAVAR.setEnabled(ativar);
@@ -999,8 +998,6 @@ public class ClienteView extends IMenu {
     }
 
     private void mostrar(ClienteModel cliente) {
-        
-                
         edtCLI_CODIGO.setText(String.valueOf(cliente.getCLI_CODIGO()));
         edtPES_CODIGO.setText(String.valueOf(cliente.getPessoamodel().getPES_CODIGO()));
         edtCLI_NOME.setText(cliente.getPessoamodel().getPES_NOME());
@@ -1019,7 +1016,7 @@ public class ClienteView extends IMenu {
         edtCLI_CELULAR.setText(cliente.getPessoamodel().getPES_CELULAR());
         edtCLI_EMAIL.setText(cliente.getPessoamodel().getPES_EMAIL());
         comboCLI_ATIVO.setSelectedItem(cliente.getPessoamodel().getPES_ATIVO());
-        edtCLI_LIMITECRED.setText(String.valueOf(NFC.format(cliente.getCLI_LIMITECRED())));
+        edtCLI_LIMITECRED.setText(String.valueOf(cliente.getCLI_LIMITECRED()));
     }
 
     private String filtrar() {

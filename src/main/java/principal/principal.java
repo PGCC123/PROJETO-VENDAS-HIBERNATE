@@ -7,6 +7,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import view.LoginView;
 
 public class principal {
+    
     Conexao objconexao;
     LoginView loginview;
 

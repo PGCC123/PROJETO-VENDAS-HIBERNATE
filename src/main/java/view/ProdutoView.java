@@ -25,7 +25,7 @@ public class ProdutoView extends IMenu {
     private ArrayList<ProdutoModel> array;
     private ProdutoTableModel mtb;
     private ProdutoController produtocontroller;
-        private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
+    private final NumberFormat NFC = NumberFormat.getCurrencyInstance();
 
     private String getOperacao() {
         return operacao;
@@ -33,7 +33,6 @@ public class ProdutoView extends IMenu {
 
     private void setOperacao(String operacao) {
         Boolean ativar = (operacao.equals("") ? false : true);
-        // operacao=""(consulta), operacao="incluir"(inclusão), operacao="alterar"(alteração)
         this.operacao = operacao;
         btnGRAVAR.setEnabled(ativar);
         btnGRAVAR.setEnabled(ativar);
@@ -67,7 +66,7 @@ public class ProdutoView extends IMenu {
         this.pack();
     }
 
-    private boolean validacao() { // não completa. 
+    private boolean validacao() {
         String erroMessage = "Campos com * devem ser preenchidos!";
 
         if (edtPRO_NOME.getText() == null || edtPRO_NOME.getText().length() == 0) {
@@ -858,11 +857,11 @@ public class ProdutoView extends IMenu {
         edtPRO_NOME.setText(produto.getPRO_NOME());
         edtPRO_ESTOQUE.setText(String.valueOf(produto.getPRO_ESTOQUE()));
         edtPRO_UNIDADE.setText(String.valueOf(produto.getPRO_UNIDADE()));
-        edtPRO_PRECO.setText(String.valueOf(NFC.format(produto.getPRO_PRECO())));
-        edtPRO_CUSTO.setText(String.valueOf(NFC.format(produto.getPRO_CUSTO())));
-        edtPRO_ATACADO.setText(String.valueOf(NFC.format(produto.getPRO_ATACADO())));
-        edtPRO_MIN.setText(String.valueOf(NFC.format(produto.getPRO_MIN())));
-        edtPRO_MAX.setText(String.valueOf(NFC.format(produto.getPRO_MAX())));
+        edtPRO_PRECO.setText(String.valueOf(produto.getPRO_PRECO()));
+        edtPRO_CUSTO.setText(String.valueOf(produto.getPRO_CUSTO()));
+        edtPRO_ATACADO.setText(String.valueOf(produto.getPRO_ATACADO()));
+        edtPRO_MIN.setText(String.valueOf(produto.getPRO_MIN()));
+        edtPRO_MAX.setText(String.valueOf(produto.getPRO_MAX()));
         edtPRO_EMBALAGEM.setText(String.valueOf(produto.getPRO_EMBALAGEM()));
         edtPRO_PESO.setText(String.valueOf(produto.getPRO_PESO()));
         edtPRO_OBS.setText(produto.getPRO_OBS());
@@ -951,7 +950,6 @@ public class ProdutoView extends IMenu {
             produtomodel.setPRO_MAX(Double.parseDouble(edtPRO_MAX.getText()));
             produtomodel.setPRO_EMBALAGEM(Double.parseDouble(edtPRO_EMBALAGEM.getText()));
             produtomodel.setPRO_PESO(Double.parseDouble(edtPRO_PESO.getText()));
-            //produtomodel.setPRO_CADASTRO(textPRO_CADASTRO.getText());
             produtomodel.setPRO_OBS(edtPRO_OBS.getText());
             produtomodel.setPRO_ATIVO(comboPRO_ATIVO.getSelectedItem().toString());
 
